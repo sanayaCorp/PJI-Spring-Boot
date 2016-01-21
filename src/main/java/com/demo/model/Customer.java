@@ -7,10 +7,15 @@ package com.demo.model;
 
 import com.demo.adapter.JaxbBigDecimalAdapter;
 import com.demo.adapter.JaxbDateAdapter;
+import java.io.Serializable;
 
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import javax.persistence.Cacheable;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
@@ -21,8 +26,12 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  *
  * @author sanayapc
  */
+@Entity
+@Table(name = "TICKETS")
+@Cacheable(value = false)
 @XmlRootElement(name = "customer")
-public class Customer {
+public class Customer implements Serializable {
+   @Id
    private String name;
    private String address;
    private String gender;
