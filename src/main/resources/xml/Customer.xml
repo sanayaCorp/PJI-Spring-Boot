@@ -1,11 +1,10 @@
-<?xml version="1.0"?>
-<customers>
-    <Customer>
-        <name>John Doe</name>
-        <address city="Sydney" postal="2060">181, Miller Street</address>
-        <Gender>M</Gender>
-        <DOB>01-01-1971</DOB>
-        <Currency>AUD</Currency>
-        <Balance>9.9</Balance>
-    </Customer>
-</customers>
+<?xml version="1.0" encoding="UTF-8"?>
+<customer>
+    <name>John Doe</name>
+    <address city="Sydney" postal="2060">181, Miller Street</address>
+    <Gender>M</Gender>
+    <DOB>01-01-1971</DOB>
+    <Currency>AUD</Currency>
+    <Balance>9.9</Balance>
+</customer>
+

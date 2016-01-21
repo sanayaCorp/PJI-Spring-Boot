@@ -6,11 +6,13 @@
 package com.demo.model;
 
 import com.demo.adapter.JaxbBigDecimalAdapter;
-import com.demo.adapter.JaxbCategoryItemAdapter;
 import com.demo.adapter.JaxbDateAdapter;
+
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
+import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
@@ -24,19 +26,18 @@ public class Customer {
    private String name;
    private String address;
    private String gender;
-   private Date date;
-   private String curs;
-   private BigDecimal bal;
-   
-   @XmlJavaTypeAdapter(JaxbCategoryItemAdapter.class)
-   @XmlElement(name = "name")
-   
+   private String dob;
+   private String currency;
+   private BigDecimal balance;
+
     /**
      * @return the name
      */
-    public String getName() {
+   
+   @XmlElement(name = "name")
+   public String getName() {
         return name;
-    }
+   }
 
     /**
      * @param name the name to set
@@ -44,11 +45,11 @@ public class Customer {
     public void setName(String name) {
         this.name = name;
     }
-    
-    @XmlElement(name = "address")
+        
     /**
      * @return the address
      */
+    @XmlElement(name = "address")
     public String getAddress() {
         return address;
     }
@@ -59,11 +60,11 @@ public class Customer {
     public void setAddress(String address) {
         this.address = address;
     }
-    
-    @XmlElement(name = "Gender")
+        
     /**
      * @return the gender
      */
+    @XmlElement(name = "Gender")
     public String getGender() {
         return gender;
     }
@@ -76,33 +77,32 @@ public class Customer {
     }
     /**
      * @return the date
-     */
-    @XmlJavaTypeAdapter(JaxbDateAdapter.class)
-    @XmlElement    
-    public Date getDate() {
-        return date;
+     */    
+    @XmlElement(name = "DOB")   
+    public String getDob() {
+        return dob;
     }
 
     /**
      * @param date the date to set
      */
-    public void setDate(Date date) {
-        this.date = date;
+    public void setDob(String dob) {
+        this.dob = dob;
     }
 
     /**
      * @return the curs
      */
-    @XmlElement
-    public String getCurs() {
-        return curs;
+    @XmlElement(name = "Currency")
+    public String getCurrency() {
+        return currency;
     }
 
     /**
      * @param curs the curs to set
      */
-    public void setCurs(String curs) {
-        this.curs = curs;
+    public void setCurrency(String currency) {
+        this.currency = currency;
     }
 
     /**
@@ -110,23 +110,23 @@ public class Customer {
      */
     @XmlJavaTypeAdapter(JaxbBigDecimalAdapter.class)
     @XmlElement(name = "Balance")
-    public BigDecimal getBal() {
-        return bal;
+    public BigDecimal getBalance() {
+        return balance;
     }
 
     /**
      * @param bal the bal to set
      */
-    public void setBal(BigDecimal bal) {
-        this.bal = bal;
+    public void setBalance(BigDecimal balance) {
+        this.balance = balance;
     }
     
     
-	// for csv demo only
-	public String getCsvDob() {
+    // for csv demo only
+    public String getCsvDob() {
 
-            SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-            return dateFormat.format(getDate());
-
-	}
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");        
+        return dateFormat.format(getDob());
+    }
+    
 }
